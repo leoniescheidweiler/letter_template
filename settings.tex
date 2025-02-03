@@ -1,0 +1,31 @@
+\documentclass[
+	fontsize=12pt,
+	parskip=full,
+	paper=A4,
+	fromalign=right,
+	fromphone=false,
+	fromemail=true,
+	version=last,
+]{scrlttr2}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+
+\usepackage{pdfpages} % include pdfs in the appendix
+\usepackage[hidelinks]{hyperref} % clickable links
+
+% business line
+\removereffields
+\newcommand{\businesslineentry}[3]{
+    \newkomavar*{#1}
+    \setkomavar{#1}[#2]{#3}
+    }
+
+% left-aligned closing and signature
+\renewcommand*{\raggedsignature}{\raggedright}
+
+% show page number on the first page and show total number of pages
+\setkomavar{firstfoot}{\centering\pagemark}
+\renewcommand*\pagemark{
+  \usekomafont{pagenumber}{\pagename~\thepage~of~\letterlastpage}
+}
