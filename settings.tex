@@ -24,6 +24,15 @@
 % left-aligned closing and signature
 \renewcommand*{\raggedsignature}{\raggedright}
 
+% add signature image
+\IfFileExists{./img/Unterschrift.jpg}{
+    \setplength{sigbeforevskip}{0cm}
+    \setkomavar{signature}{
+        \hspace{3ex}\includegraphics[height=1cm]{img/Unterschrift}\\
+        \usekomavar{fromname}
+    }
+}{}
+
 % define variable for localized "of" for "Page X of Y"
 \newcommand{\pageof}{
     \iflanguageloaded{german}{Seite \thepage~von \letterlastpage}{}
