@@ -9,7 +9,7 @@
 ]{scrlttr2}
 
 \usepackage{polyglossia}
-\setdefaultlanguage{german}
+\setmainlanguage{german}
 
 \usepackage{pdfpages} % include pdfs in the appendix
 \usepackage[hidelinks]{hyperref} % clickable links
@@ -24,8 +24,14 @@
 % left-aligned closing and signature
 \renewcommand*{\raggedsignature}{\raggedright}
 
+% define variable for localized "of" for "Page X of Y"
+\newcommand{\pageof}{
+    \iflanguageloaded{german}{Seite \thepage~von \letterlastpage}{}
+    \iflanguageloaded{english}{Page \thepage~of \letterlastpage}{}
+}
+
 % show page number on the first page and show total number of pages
 \setkomavar{firstfoot}{\centering\pagemark}
 \renewcommand*\pagemark{
-  \usekomafont{pagenumber}{\pagename~\thepage~of~\letterlastpage}
+    \usekomafont{pagenumber}{\pageof}
 }
